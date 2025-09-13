@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLVR Melt - The Future of Flavor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        @media print {
+            .page-break-before {
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-[#073B4C]">
+
+    <main class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center py-12">
+            <img src="flvr-logo-modern.png" alt="FLVR Melt Company Logo" class="w-64 mx-auto mb-6">
+            <h1 class="text-4xl md:text-6xl font-bold text-[#118AB2]">The Future of Flavor</h1>
+            <p class="text-xl mt-4 max-w-3xl mx-auto">Reinvent your ritual with the clean, convenient way to customize your favorite coffee & tea.</p>
+        </header>
+        
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center my-12">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-3xl font-bold text-[#073B4C] mb-4">No Mess. No Guesswork.</h2>
+                <p class="text-lg mb-4">Say goodbye to sticky pumps, messy powders, and bulky bottles. FLVR Melt is a revolutionary way to customize your favorite hot beverages. We've concentrated gourmet flavors into elegant, perfectly portioned tiles that dissolve instantly.</p>
+                <div class="mt-6 space-y-3">
+                    <div class="flex items-center">
+                        <span class="text-2xl text-[#06D6A0]">✓</span>
+                        <p class="ml-3 text-lg">Crafted from Natural & Organic Ingredients</p>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-2xl text-[#06D6A0]">✓</span>
+                        <p class="ml-3 text-lg">Perfectly Portioned for a Consistent Taste</p>
+                    </div>
+                     <div class="flex items-center">
+                        <span class="text-2xl text-[#06D6A0]">✓</span>
+                        <p class="ml-3 text-lg">Gluten-Free with Vegan Options Available</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                 <img src="mocha-stack.png" alt="A stack of FLVR Melt mocha tiles" class="rounded-2xl shadow-xl w-full h-auto object-cover">
+            </div>
+        </section>
+
+        <section class="my-16 text-center">
+            <h2 class="text-3xl font-bold mb-8">As Easy As 1, 2, 3</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                <div class="flex flex-col items-center">
+                    <div class="relative mb-4">
+                        <div class="absolute -top-4 -left-4 w-12 h-12 bg-[#FFD166] rounded-full flex items-center justify-center text-2xl font-bold text-[#073B4C]">1</div>
+                        <img src="step-1.png" alt="Step 1: Drop" class="rounded-2xl shadow-lg w-full">
+                    </div>
+                    <h3 class="text-2xl font-bold mt-2">DROP</h3>
+                    <p class="mt-1 text-lg">Snap off 1 for a hint, or up to 4 for a burst of flavor.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="relative mb-4">
+                        <div class="absolute -top-4 -left-4 w-12 h-12 bg-[#06D6A0] rounded-full flex items-center justify-center text-2xl font-bold text-[#073B4C]">2</div>
+                        <img src="step-2.png" alt="Step 2: Melt" class="rounded-2xl shadow-lg w-full">
+                    </div>
+                    <h3 class="text-2xl font-bold mt-2">MELT</h3>
+                    <p class="mt-1 text-lg">Watch it dissolve in seconds.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                     <div class="relative mb-4">
+                        <div class="absolute -top-4 -left-4 w-12 h-12 bg-[#FF6B6B] rounded-full flex items-center justify-center text-2xl font-bold text-[#073B4C]">3</div>
+                        <img src="step-3.png" alt="Step 3: Enjoy" class="rounded-2xl shadow-lg w-full">
+                    </div>
+                    <h3 class="text-2xl font-bold mt-2">ENJOY</h3>
+                    <p class="mt-1 text-lg">Your perfectly crafted cup.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-16">
+             <h2 class="text-3xl font-bold text-center mb-8">Coffee Flavors Collection</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                     <p class="text-lg mb-4">Our coffee flavors are expertly crafted to complement the rich, bold notes of your favorite brew. From classic enhancements to decadent treats, there's a perfect pairing for every coffee lover. Mocha and Caramel lead the pack as our most popular choices for a reason!</p>
+                    <div class="chart-container">
+                        <canvas id="coffeeChart"></canvas>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="mocha.png" alt="Mocha Tile" class="rounded-lg shadow-md w-full h-auto">
+                    <img src="caramel.png" alt="Caramel Tile" class="rounded-lg shadow-md w-full h-auto">
+                    <img src="white-chocolate-mocha.png" alt="White Chocolate Mocha Tile" class="rounded-lg shadow-md w-full h-auto">
+                    <img src="cream-and-sugar.png" alt="Cream and Sugar Tile" class="rounded-lg shadow-md w-full h-auto">
+                </div>
+            </div>
+        </section>
+
+        <section class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-8">Tea Flavors Collection</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="grid grid-cols-3 gap-4 md:order-1">
+                    <img src="jasmine-peach.png" alt="Jasmine Peach Tile" class="rounded-lg shadow-md w-full h-auto">
+                    <img src="berry-medley.png" alt="Berry Medley Tile" class="rounded-lg shadow-md w-full h-auto">
+                     <img src="lavender.png" alt="Lavender Tile" class="rounded-lg shadow-md w-full h-auto col-span-1">
+                    <img src="arnold-palmer.png" alt="Arnold Palmer Tile" class="rounded-lg shadow-md w-full h-auto col-span-2">
+                    <img src="pineapple-mango.png" alt="Pineapple Mango Tile" class="rounded-lg shadow-md w-full h-auto">
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-8 md:order-2">
+                    <p class="text-lg mb-4">Elevate your tea with vibrant and refreshing flavors. Each profile is unique, from the highly fruity and sweet Pineapple Mango to the delicate floral notes of Lavender. Find your perfect infusion.</p>
+                    <div class="chart-container">
+                        <canvas id="teaChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-16 page-break-before">
+             <h2 class="text-3xl font-bold text-center mb-12">Packaging & Availability</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                 <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h3 class="text-2xl font-bold text-center mb-6 text-[#118AB2]">Retail Tins <span class="text-lg text-slate-500 font-normal">(12 Tiles)</span></h3>
+                    <p class="text-lg mb-6 text-center">Our premium, slide-top tins are perfect for home use, the office, or as a gift. They are reusable and designed to be a permanent part of your coffee or tea station.</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="mocha-tin-front.png" alt="Front of Mocha Tin" class="rounded-lg shadow-md w-full h-auto">
+                        <img src="mocha-tin-rear.png" alt="Rear of Mocha Tin" class="rounded-lg shadow-md w-full h-auto">
+                        <img src="caramel-tin-front.png" alt="Front of Caramel Tin" class="rounded-lg shadow-md w-full h-auto">
+                        <img src="caramel-tin-rear.png" alt="Rear of Caramel Tin" class="rounded-lg shadow-md w-full h-auto">
+                    </div>
+                 </div>
+                 <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h3 class="text-2xl font-bold text-center mb-6 text-[#06D6A0]">Refill Sleeves <span class="text-lg text-slate-500 font-normal">(18 Tiles)</span></h3>
+                    <p class="text-lg mb-6 text-center">An economical and eco-friendly option for our loyal customers. Each sleeve contains more tiles and uses minimal packaging to refill your favorite tin.</p>
+                    <div class="grid grid-cols-2 gap-4">
+                         <img src="mocha-refill-front.png" alt="Front of Mocha Refill Sleeve" class="rounded-lg shadow-md w-full h-auto">
+                         <img src="mocha-refill-rear.png" alt="Rear of Mocha Refill Sleeve" class="rounded-lg shadow-md w-full h-auto">
+                         <img src="caramel-refill-front.png" alt="Front of Caramel Refill Sleeve" class="rounded-lg shadow-md w-full h-auto">
+                         <img src="caramel-refill-rear.png" alt="Rear of Caramel Refill Sleeve" class="rounded-lg shadow-md w-full h-auto">
+                    </div>
+                 </div>
+             </div>
+        </section>
+        
+        <footer class="text-center py-12 border-t mt-8">
+            <p class="text-lg">Ready to revolutionize your beverage menu?</p>
+            <p class="mt-2 font-bold text-xl text-[#118AB2]">Contact Sales: sales@flvrmelt.com | 1-800-555-FLVR</p>
+        </footer>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const wrapLabel = (label, maxWidth) => {
+                if (typeof label !== 'string' || label.length <= maxWidth) {
+                    return label;
+                }
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                for (const word of words) {
+                    if ((currentLine + word).length > maxWidth) {
+                        lines.push(currentLine.trim());
+                        currentLine = '';
+                    }
+                    currentLine += word + ' ';
+                }
+                lines.push(currentLine.trim());
+                return lines;
+            };
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                }
+                return label;
+            };
+            
+            const chartDefaults = {
+                font: {
+                    family: "'Inter', sans-serif",
+                    size: 14,
+                },
+                color: '#073B4C'
+            };
+
+            Chart.defaults.font.family = chartDefaults.font.family;
+            Chart.defaults.font.size = chartDefaults.font.size;
+            Chart.defaults.color = chartDefaults.color;
+
+            const coffeeData = {
+                labels: ['Mocha', 'Caramel', wrapLabel('White Chocolate Mocha', 16), wrapLabel('Cream and Sugar', 16)],
+                datasets: [{
+                    label: 'Flavor Popularity Index',
+                    data: [90, 85, 70, 50],
+                    backgroundColor: ['#118AB2', '#06D6A0', '#FFD166', '#FF6B6B'],
+                    borderColor: '#ffffff',
+                    borderWidth: 2,
+                    borderRadius: 8,
+                }]
+            };
+
+            new Chart(document.getElementById('coffeeChart'), {
+                type: 'bar',
+                data: coffeeData,
+                options: {
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            grid: { display: false },
+                            ticks: { display: false }
+                        },
+                        y: {
+                            grid: { display: false }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: { title: tooltipTitleCallback }
+                        }
+                    }
+                }
+            });
+            
+            const teaData = {
+                labels: ['Lavender', wrapLabel('Berry Medley', 16), wrapLabel('Jasmine Peach', 16), wrapLabel('Arnold Palmer', 16), wrapLabel('Pineapple Mango', 16)],
+                datasets: [
+                    {
+                        label: 'Fruity',
+                        data: [1, 5, 4, 3, 5],
+                        borderColor: '#FF6B6B',
+                        backgroundColor: 'rgba(255, 107, 107, 0.2)',
+                    },
+                    {
+                        label: 'Floral',
+                        data: [5, 1, 4, 1, 1],
+                        borderColor: '#FFD166',
+                        backgroundColor: 'rgba(255, 209, 102, 0.2)',
+                    },
+                    {
+                        label: 'Sweet',
+                        data: [3, 4, 3, 4, 5],
+                        borderColor: '#06D6A0',
+                        backgroundColor: 'rgba(6, 214, 160, 0.2)',
+                    }
+                ]
+            };
+
+            new Chart(document.getElementById('teaChart'), {
+                type: 'radar',
+                data: teaData,
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(7, 59, 76, 0.2)' },
+                            grid: { color: 'rgba(7, 59, 76, 0.2)' },
+                            pointLabels: { font: { size: 12 } },
+                            ticks: { backdropColor: 'rgba(255, 255, 255, 0.75)' }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: { title: tooltipTitleCallback }
+                        },
+                        legend: {
+                            position: 'bottom',
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
